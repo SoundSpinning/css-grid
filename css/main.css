@@ -1,0 +1,265 @@
+/* 
+  FLEXBOX layout
+	Made by Sound Spinning | soundspinning.co.uk
+*/
+
+/* FONTS: 
+Pair a modern sans-serif (e.g., Inter) for body text with a monospace font (e.g., Fira Code) for code/engineering sections. */
+/* https://fonts.bunny.net/ - do not track, faster than G-fonts [?] */
+
+/* For font-weight use: normal (400), bold (700), lighter, bolder or a number.
+   The specific classes method below is only for reference, not easy to maintain.
+*/
+
+/* font-weight: <weight> --> Use a value from 100 to 900
+.inter-<uniquifier> --> Use a unique and descriptive class name */
+/* h1, h2, h3, h4, h5, h6, */
+body,
+.inter-400 {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: 400; */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* font-weight: <weight> --> Use a value from 300 to 700
+.fira-code-<uniquifier> --> Use a unique and descriptive class name */
+h1, h2, h3, h4, h5, h6,
+/* body, */
+.fira-code-500 {
+  font-family: "Fira Code", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: 500; */
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+/* 
+  GLOBAL page settings:
+  ======
+  Remember `rem` & `rlh` are relative to the global (<html>) values below.
+  Also, `%` is always relative to the 'length' of the parent element.
+  `%` units for width & height are wrt the inline-block (hor.) total width.
+  When more than one `%` is used in 'nested elements', remember it gets cumulative ...
+
+  `max-width` as `100%` helps to prevent overflow issues, and avoids over-stretching images.
+  This tech helps to make images responsive for all screens:
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing
+*/
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;  /* Default `lh`: 1.2 * font-size */
+  background-color: lightgrey;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  /* width: 90%; */
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+/* LINKS follow an order in styling */
+a:link,
+a:active {
+  color: black;
+  text-decoration: solid underline crimson;
+}
+
+a:hover,
+a:visited,
+a:focus {
+  color: unset;
+  text-decoration: dashed underline crimson;
+}
+
+/* 
+  POSITION settings:
+  ========
+  Static (default), relative (wrt last ancestor positioning), absolute (wrt containing element OR initial containing block), fixed (wrt viewport) & sticky (scrolls with content till reached its location, then sticky).
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Positioning
+*/
+
+/* Add ANIMATIONs */
+@keyframes slideIn {
+  from {bottom: -20vh; opacity: 0;}
+  to {bottom: 0; opacity: 1;}
+}
+
+@keyframes slideOut {
+  from {bottom: 0; opacity: 1;}
+  to {bottom: -20vh; opacity: 0;}
+}
+
+/* FLEXBOX */
+main {
+  background-color: thistle;
+  padding: 1rem;
+  /* <grid-row-gap> <grid-column-gap> */
+  gap: 1rem;
+  display: grid;
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* grid-template-rows: masonry; */
+  /* grid-template-rows: min-content 1fr min-content; */
+  /* grid-auto-flow: row; */
+
+  /* ROW grid axis */
+  /* justify-items: stretch; */
+  /* justify-content: space-evenly; */
+  
+  /* COLUMN grid axis */
+  /* align-items: stretch; */
+  /* align-content: stretch; */
+}
+
+article {
+  /* margin: auto; */
+  /* padding: 1rem; */
+  /* flex - grow_factor shrink_factor min-size */
+  /* flex: 1 1 240px; */
+  max-width: 400px;
+}
+
+/* article:last-child {
+  flex: 100;
+} */
+
+/* article h2, p {
+  display: none;
+} */
+
+/* default flex order = 0 */
+/* article:nth-of-type(1) {
+  order: -1;
+} */
+
+
+/* Responsive images/media:
+   `max-width: 100%` scales media to ensure they never overflow their containers.
+   <picture> allows for a set of images.
+*/
+img,
+picture,
+video {
+  max-width: 100%;
+  max-height: 800px;
+  transition: 0.3s;
+}
+
+article img:hover {
+  scale: 0.95;
+  filter: sepia(75%);
+  cursor: pointer;
+  border-radius: 25%;
+}
+
+#main-modal {
+  background-color: black;
+  color: lavender;
+  display: none; 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  /* Enable scroll if needed */
+  overflow: auto; 
+  animation: slideIn 1s;
+}
+
+#modal-content {
+  position: absolute;
+  /* width: 100%; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#modal-caption {
+  text-align: center;
+  padding: 1rem;
+}
+
+.close {
+  position: absolute;
+  /* min-width: 3rem; */
+  top: 3rem;
+  right: 3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 4rem;
+  /* text-align: center; */
+  line-height: 1rem;
+  transition: 0.3s;
+}
+
+.close:hover {
+  transform: scale(1.2);
+  color: gold;
+  cursor: pointer;
+}
+
+header {
+  background-color: lightgrey;
+  padding: 0 1rem;
+  /* margin-bottom: 1rem; */
+  width: 100%;
+}
+
+footer {
+  background-color: gray;
+  padding: 0 1rem;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  opacity: 0.95;
+  animation: slideIn 1s;
+}
+
+footer a, 
+footer a:hover,
+footer a:visited,
+footer a:active {
+  color: aliceblue;
+}
+
+.foot-bar {
+  display: flex;
+  /* flex - direction wrap/nowrap; */
+  flex-flow: row wrap;
+  /* CROSS flex axis */
+  align-items: center;
+  /* MAIN flex axis */
+  justify-content: space-between;  
+  /* position: fixed; */
+}
+
+#foot-modal {
+  display: none;
+  position: relative;
+  flex-flow: row wrap;
+  animation: slideIn 1s;
+}
+
+#foot-modal > * {
+  flex: 1 1 240px;
+  margin: 0 1rem;
+}
+
+#foot-modal .close {
+  top: 0.2rem;
+  right: 0;
+  font-size: 3rem;
+}
+
+
