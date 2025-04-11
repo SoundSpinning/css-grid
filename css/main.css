@@ -53,6 +53,7 @@ html {
   font-size: 16px;
   line-height: 1.5;  /* Default `lh`: 1.2 * font-size */
   background-color: lightgrey;
+  overflow-x: hidden;
 }
 
 *,
@@ -122,26 +123,12 @@ main {
 }
 
 article {
-  /* margin: auto; */
-  /* padding: 1rem; */
-  /* flex - grow_factor shrink_factor min-size */
-  /* flex: 1 1 240px; */
   max-width: 400px;
 }
-
-/* article:last-child {
-  flex: 100;
-} */
 
 /* article h2, p {
   display: none;
 } */
-
-/* default flex order = 0 */
-/* article:nth-of-type(1) {
-  order: -1;
-} */
-
 
 /* Responsive images/media:
    `max-width: 100%` scales media to ensure they never overflow their containers.
@@ -151,7 +138,8 @@ img,
 picture,
 video {
   max-width: 100%;
-  max-height: 800px;
+  max-height: 90vh;
+  /* max-height: 800px; */
   transition: 0.3s;
 }
 
@@ -168,7 +156,7 @@ article img:hover {
   display: none; 
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 0;
+  /* left: 0; */
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
@@ -178,16 +166,16 @@ article img:hover {
 }
 
 #modal-content {
-  position: absolute;
-  /* width: 100%; */
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  display: flex; 
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;  
+  height: 100%;
 }
 
 #modal-caption {
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .close {
