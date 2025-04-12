@@ -1,5 +1,5 @@
 /* 
-  FLEXBOX layout
+  GRID / FLEXBOX layout
 	Made by Sound Spinning | soundspinning.co.uk
 */
 
@@ -112,12 +112,34 @@ a:visited {
   to {bottom: -20vh; opacity: 0;}
 }
 
-/* FLEXBOX */
-main {
+/* Common to CSS Flexbox & Grid */
+main#grid {
   background-color: thistle;
   padding: 1rem;
   /* <grid-row-gap> <grid-column-gap> */
   gap: 1rem;
+}
+
+/* FLEXBOX */
+main.flex-gallery {
+  /* max-width: min-content; */
+  display: flex;
+  /* flex: direction wrap/nowrap; */
+  flex-flow: row wrap;
+  /* CROSS flex axis */
+  /* align-items: center; */
+  /* MAIN flex axis */
+  /* justify-content: space-around; */
+}
+
+main.flex-gallery article {
+  /* flex - grow_factor shrink_factor min-size */
+  flex: 1 1 240px;
+  max-width: 400px;
+}
+
+/* GRID */
+main.grid-gallery {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -217,6 +239,7 @@ footer {
   padding: 0 1rem;
   position: sticky;
   width: 100%;
+  height: 100%;
   left: 0;
   bottom: 0;
   opacity: 0.95;
@@ -267,6 +290,7 @@ footer span a:focus {
   flex-flow: row wrap;
   animation: slideIn 1s;
   padding-top: 1rem;
+  overflow: auto;   /* Enable scroll if needed */
 }
 
 #foot-modal > section {
