@@ -72,7 +72,7 @@ function init() {
         footModal.style.display = "none";
         footModal.style.animation = "slideIn 1s";
         footBar.style.display = "flex";
-      },600)
+      },500)
     }
   })
   // console.log("Got Here#2"); 

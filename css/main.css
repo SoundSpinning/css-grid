@@ -103,13 +103,13 @@ a:visited {
 
 /* Add ANIMATIONs */
 @keyframes slideIn {
-  from {bottom: -20vh; opacity: 0;}
-  to {bottom: 0; opacity: 1;}
+  from {translate: 0vw 100vh; opacity: 0; scale: 0;}
+  to {translate: 0 0; opacity: 1; scale: 1;}
 }
 
 @keyframes slideOut {
-  from {bottom: 0; opacity: 1;}
-  to {bottom: -20vh; opacity: 0;}
+  from {translate: 0 0; opacity: 1; scale: 1;}
+  to {translate: 100vw 100vh; opacity: 0; scale: 0;}
 }
 
 /* Common to CSS Flexbox & Grid */
@@ -175,7 +175,7 @@ video {
   max-height: 90vh;
   /* max-height: 800px; */
   /* transition - <property> <duration> <timing-function> <delay>; */
-  transition: 0.3s;
+  transition: 1s;
 }
 
 article img:hover {
@@ -218,7 +218,7 @@ article img:hover {
   font-family: "Inter", sans-serif;
   font-size: 4rem;
   line-height: 1rem;
-  transition: 0.3s;
+  transition: 1s;
 }
 
 .close:hover {
