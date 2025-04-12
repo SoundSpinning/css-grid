@@ -50,9 +50,11 @@ function init() {
   })
   
   // About box popup
-  var aboutBox = document.querySelector(".foot-bar > a");
+  var footBar = document.querySelector(".foot-bar");
+  var aboutBox = document.querySelector(".foot-bar > span > a");
   aboutBox.onclick=()=> {
     footModal.style.display = "flex";
+    footBar.style.display = "none";
   }
   
   // Get the <span> elements that close the modals
@@ -69,6 +71,7 @@ function init() {
         modal.style.animation = "slideIn 1s";
         footModal.style.display = "none";
         footModal.style.animation = "slideIn 1s";
+        footBar.style.display = "flex";
       },500)
     }
   })

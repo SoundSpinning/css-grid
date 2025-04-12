@@ -167,14 +167,12 @@ article img:hover {
   background-color: black;
   color: lavender;
   display: none; 
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  /* left: 0; */
+  position: fixed;   /* Stay in place */
+  z-index: 1;   /* Sit on top */
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  /* Enable scroll if needed */
-  overflow: auto; 
+  width: 100%;   /* Full width */
+  height: 100%;   /* Full height */
+  overflow: auto;   /* Enable scroll if needed */
   animation: slideIn 1s;
 }
 
@@ -193,17 +191,12 @@ article img:hover {
 
 .close {
   position: absolute;
-  /* min-width: 3rem; */
-  top: 3rem;
-  right: 3rem;
+  top: 2rem;
+  right: 2rem;
   font-family: "Inter", sans-serif;
   font-size: 4rem;
-  /* text-align: center; */
   line-height: 1rem;
   transition: 0.3s;
-  /* perspective: 40rem;
-  perspective-origin: left;
-  transform-style: preserve-3d; */
 }
 
 .close:hover {
@@ -222,7 +215,7 @@ header {
 footer {
   background-color: gray;
   padding: 0 1rem;
-  position: fixed;
+  position: sticky;
   width: 100%;
   left: 0;
   bottom: 0;
@@ -230,27 +223,18 @@ footer {
   animation: slideIn 1s;
 }
 
-footer a, 
-footer a:visited,
-footer a:active {
+footer span a, 
+footer span a:visited,
+footer span a:active {
   color: aliceblue;
 }
 
-footer a:hover,
-footer a:focus {
+footer span a:hover,
+footer span a:focus {
   background-color: black;
   border: 1px solid;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
-}
-
-.foot-bar > a {
-  letter-spacing: .2rem;
-  padding: 0 0.6rem;
-}
-
-.foot-bar > a span {
-  font-size: 1.25rem;
 }
 
 .foot-bar {
@@ -265,20 +249,27 @@ footer a:focus {
   padding: 0.3rem;
 }
 
+.foot-bar > span > a {
+  padding: 0 0.6rem;
+}
+
+.foot-bar > span:first-of-type > a {
+  letter-spacing: .2rem;
+}
+
+.foot-bar > span a span {
+  font-size: 1.25rem;
+}
+
 #foot-modal {
   display: none;
-  position: relative;
+  /* position: relative; */
   flex-flow: row wrap;
   animation: slideIn 1s;
+  padding-top: 1rem;
 }
 
-#foot-modal > * {
+#foot-modal > section {
   flex: 1 1 240px;
   margin: 0 1rem;
-}
-
-#foot-modal .close {
-  top: 0.2rem;
-  right: 0;
-  font-size: 3rem;
 }
