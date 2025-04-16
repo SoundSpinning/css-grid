@@ -7,6 +7,7 @@ var imgix_path = "https://sound-spinning-pics.imgix.net/";
 // imgix settings, appended after image filename.
 // Input width value `w=` right.
 var imgix_ops = "?w=800&auto=compress,enhance,format";
+// var index = 0;
 
 // START parsing file list
 fetch('js/images.json')
@@ -16,10 +17,11 @@ fetch('js/images.json')
   const dataImgs = data.images;
   // Append images to HTML
   for (const img of dataImgs) {
+    // index += 1;
     main_grid.innerHTML +=
 `     <!-- IMG${img.imgId} -->
 			<article>
-				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy"/>
+				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${img.imgId}"/>
 				<h2>${img.imgId}.- ${img.title}</h2>
 				<p>${img.info}</p>
 			</article>`;
@@ -38,14 +40,45 @@ function init() {
   var footModal = document.getElementById("foot-modal");
   
   // Get the image and insert it inside the modal - use its "alt" text as a caption
+  // + carousel inside the modal
   var imgs = document.querySelectorAll("article img");
+  var imgH2 = document.querySelectorAll("article h2");
+  var imgp = document.querySelectorAll("article p");
   var modalImg = document.getElementById("modal-img");
+  var modalPrev = document.getElementById("prev");
+  var modalNext = document.getElementById("next");
+  var modalCount = document.getElementById("count");
   var captionText = document.getElementById("modal-caption");
   imgs.forEach(e => {
     e.onclick=()=> {
       modal.style.display = "block";
       modalImg.src = e.src;
       captionText.innerHTML = e.alt;
+      modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
+      // basic carousel logic via controls
+      modalPrev.onclick=()=> {
+        if (e.dataset.id == 1) {
+          e = imgs[imgs.length - 1];          
+        } else {
+          e = imgs[e.dataset.id - 2];
+        }
+        modalImg.src = e.src;
+        captionText.innerHTML = e.alt;
+        modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
+        // console.log("clicked Prev: img-id = ", e.dataset.id); 
+      }
+      modalNext.onclick=()=> {
+        if (e.dataset.id == imgs.length) {
+          e = imgs[0];          
+        } else {
+          e = imgs[e.dataset.id];
+        }
+        modalImg.src = e.src;
+        captionText.innerHTML = e.alt;
+        modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
+        // console.log("clicked Next: img-id = ", e.dataset.id); 
+      }
+
     }
   })
   

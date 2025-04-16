@@ -192,8 +192,9 @@ article img:hover {
   position: fixed;   /* Stay in place */
   z-index: 1;   /* Sit on top */
   top: 0;
-  width: 100%;   /* Full width */
-  height: 100%;   /* Full height */
+  width: 100%;
+  height: 100%;
+  /* max-height: 100vh; */
   overflow: auto;   /* Enable scroll if needed */
   animation: slideIn 1s;
 }
@@ -206,6 +207,25 @@ article img:hover {
   height: 100%;
 }
 
+#modal-controls {
+  position: absolute;
+  top: 1rem;
+  display: flex; 
+  flex-flow: row nowrap;
+  /* align-items: center; */
+  justify-content: space-evenly;  
+  width: 100%;
+  padding: 0.5rem;
+}
+
+#modal-controls * {
+  /* flex: 1; */
+  padding: 0.5rem;
+  background-color: black;
+  transition: 1s;
+  border-radius: 10%;
+}
+
 #modal-caption {
   text-align: center;
   padding: 0.5rem;
@@ -215,12 +235,15 @@ article img:hover {
   position: absolute;
   top: 2rem;
   right: 2rem;
+  z-index: 2;
   font-family: "Inter", sans-serif;
   font-size: 4rem;
   line-height: 1rem;
   transition: 1s;
 }
 
+#prev:hover,
+#next:hover,
 .close:hover {
   transform: scale(1.2);
   color: gold;
