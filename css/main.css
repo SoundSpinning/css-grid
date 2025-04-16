@@ -218,6 +218,14 @@ article img:hover {
   padding: 0.5rem;
 }
 
+@media screen and (max-width: 430px) {
+  #modal-controls {
+    top: unset;
+    bottom: 1rem;
+    font-size: medium;
+  }
+}
+
 #modal-controls * {
   /* flex: 1; */
   padding: 0.5rem;
