@@ -22,8 +22,7 @@ fetch('js/images.json')
 `     <!-- IMG${img.imgId} -->
 			<article>
 				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${img.imgId}"/>
-				<h2>${img.imgId}.- ${img.title}</h2>
-				<p>${img.info}</p>
+				<h2>${img.imgId}.- <span>${img.alt}</span></h2>
 			</article>`;
   }
   // console.log("Got Here#1"); 
