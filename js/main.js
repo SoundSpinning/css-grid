@@ -22,7 +22,7 @@ fetch('js/images.json')
 `     <!-- IMG${img.imgId} -->
 			<article>
 				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${img.imgId}"/>
-				<h2>${img.imgId}.- <span>${img.alt}</span></h2>
+				<h2>${img.imgId}.-${img.year}<span> ${img.alt}</span></h2>
 			</article>`;
   }
   // console.log("Got Here#1"); 
@@ -36,13 +36,14 @@ fetch('js/images.json')
 function init() {
   // Get the modals
   var modal = document.getElementById("main-modal");
-  var footModal = document.getElementById("foot-modal");
+  var aboutModal = document.getElementById("about-modal");
+  var controlsModal = document.getElementById("controls-modal");
   
   // Get the image and insert it inside the modal - use its "alt" text as a caption
   // + carousel inside the modal
   var imgs = document.querySelectorAll("article img");
-  var imgH2 = document.querySelectorAll("article h2");
-  var imgp = document.querySelectorAll("article p");
+  // var imgH2 = document.querySelectorAll("article h2");
+  // var imgp = document.querySelectorAll("article p");
   var modalImg = document.getElementById("modal-img");
   var modalPrev = document.getElementById("prev");
   var modalNext = document.getElementById("next");
@@ -83,9 +84,14 @@ function init() {
   
   // About box popup
   var footBar = document.querySelector(".foot-bar");
-  var aboutBox = document.querySelector(".foot-bar > span > a");
+  var aboutBox = document.querySelector(".foot-bar > span:nth-of-type(1) > a");
+  var controlsBox = document.querySelector(".foot-bar > span:nth-of-type(2) > a");
   aboutBox.onclick=()=> {
-    footModal.style.display = "flex";
+    aboutModal.style.display = "flex";
+    footBar.style.display = "none";
+  }
+  controlsBox.onclick=()=> {
+    controlsModal.style.display = "flex";
     footBar.style.display = "none";
   }
   
@@ -97,12 +103,15 @@ function init() {
     e.onclick = function() { 
       // modal.style.display = "none";
       modal.style.animation = "slideOut 1s";
-      footModal.style.animation = "slideOut 1s";
+      aboutModal.style.animation = "slideOut 1s";
+      controlsModal.style.animation = "slideOut 1s";
       setTimeout(()=>{
         modal.style.display = "none";
         modal.style.animation = "slideIn 1s";
-        footModal.style.display = "none";
-        footModal.style.animation = "slideIn 1s";
+        aboutModal.style.display = "none";
+        aboutModal.style.animation = "slideIn 1s";
+        controlsModal.style.display = "none";
+        controlsModal.style.animation = "slideIn 1s";
         footBar.style.display = "flex";
       },500)
     }

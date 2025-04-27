@@ -120,12 +120,12 @@
 
 		<!-- Pics MODAL -->
 		<section id="main-modal">
-			<span class="close"> &times; </span>
+			<span class="close"> &cross; </span>
 			<div id="modal-content">
 				<div id="modal-controls">
-					<span id="prev">&laquo; Prev</span>
+					<span id="prev">&#10094; &#10094; Prev</span>
 					<span id="count"></span>
-					<span id="next">Next &raquo;</span>
+					<span id="next">Next &#10095; &#10095;</span>
 				</div>
 				<img id="modal-img">
 			  <div id="modal-caption"></div>
@@ -136,48 +136,54 @@
 		<footer>
 			<div class="foot-bar">
 				<span>
-					<a><span>&#x1F6C8;</span> ABOUT</a>
+					<a>ABOUT</a>
+					<!-- <span>&lpar;i&rpar;</span> -->
+					<span>&ii;</span>
 				</span>
 				<span>
-					&copy; MADE by: <a href="https://soundspinning.co.uk" target="_blank">Sound Spinning</a>
+					<a>CONTROLS</a>
+					<span>&#9874;</span>
+				</span>
+				<span>
+					&copy; Sound Spinning - 2025
 				</span>
 			</div>
 
-			<div id="foot-modal">
-			  <span class="close"> &times; </span>
+		  <!-- About MODAL -->
+			<div id="about-modal">
+			  <span class="close">&cross;</span>
+				<span class="made-by">
+					Made by: <a href="https://soundspinning.co.uk" target="_blank">Sound Spinning</a>
+				</span>
 			  <section>
-					<h2>Magna feugiat sed adipiscing</h2>
-					<p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nullaeubibendum sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</p>
+					<h2>Joe Bricks: 
+					<span>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nullaeubibendum sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</span>
+				  </h2>
 				</section>
 				<section>
 					<h2>Follow me </h2>
 					<ul class="icons">
 						<li><a href="#"><span class="label">Facebook</span></a></li>
-						<li><a href="#"><span class="label">GitHub</span></a></li>
+						<li><a href="#"><span class="label">Instagram</span></a></li>
 						<li><a href="#"><span class="label">LinkedIn</span></a></li>
 					</ul>
 				</section>
+			</div>
 
-				<!-- <section>
-					<h2>Get in touch</h2>
-					<form method="post" action="#">
-						<div class="fields">
-							<div class="field half">
-								<input type="text" name="name" id="name" placeholder="Name" />
-							</div>
-							<div class="field half">
-								<input type="text" name="email" id="email" placeholder="Email" />
-							</div>
-							<div class="field">
-								<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
-							</div>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send" class="primary" /></li>
-							<li><input type="reset" value="Reset" /></li>
-						</ul>
-					</form>
-				</section> -->
+			<!-- Controls MODAL -->
+			<div id="controls-modal">
+			  <span class="close">&cross;</span>
+					<!--Theme switch-->
+					<input type="checkbox" id="themeSwitch" name="theme-switch" class="theme-switch__input" checked/>
+					<label for="themeSwitch" class="theme-switch__label">
+					  <span>Switch theme</span>
+					</label>
+
+					<!--Captions switch-->
+					<input type="checkbox" id="captionsSwitch" name="captions-switch" class="captions-switch__input"/>
+					<label for="captionsSwitch" class="captions-switch__label">
+					  <span>AI captions</span>
+					</label>
 			</div>
 		</footer>
 

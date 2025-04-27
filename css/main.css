@@ -11,11 +11,9 @@ Pair a modern sans-serif (e.g., Inter) for body text with a monospace font (e.g.
    The specific classes method below is only for reference, not easy to maintain.
 */
 
-/* font-weight: <weight> --> Use a value from 100 to 900
-.inter-<uniquifier> --> Use a unique and descriptive class name */
-/* h1, h2, h3, h4, h5, h6, */
-body,
-.inter-400 {
+/* font-weight: <weight> ==> Use a value from 100 to 900
+.inter-<uniquifier> ==> Use a unique and descriptive class name */
+body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   /* font-weight: 400; */
@@ -23,11 +21,9 @@ body,
   font-style: normal;
 }
 
-/* font-weight: <weight> --> Use a value from 300 to 700
-.fira-code-<uniquifier> --> Use a unique and descriptive class name */
-h1, h2, h3, h4, h5, h6,
-/* body, */
-.fira-code-500 {
+/* font-weight: <weight> ==> Use a value from 300 to 700
+.fira-code-<uniquifier> ==> Use a unique and descriptive class name */
+h1, h2, h3, h4, h5, h6 {
   font-family: "Fira Code", sans-serif;
   font-optical-sizing: auto;
   /* font-weight: 500; */
@@ -48,12 +44,23 @@ h1, h2, h3, h4, h5, h6,
   This tech helps to make images responsive for all screens:
   https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing
 */
+
+/* set global VARIABLES */
+:root {
+  --base-size: 16px;
+  --gap: 1rem;
+  --max-card-w: 400px;
+  --text-colour: black;
+  --gradDark: lavender;
+  --gradLight: white;
+  --link-line: crimson;
+}
+
 html {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: var(--base-size, 16px);
   font-size: min(0.55rem + 1vw, 18px);
   line-height: 1.5;  /* Default `lh`: 1.2 * font-size */
-  background-color: lightgrey;
   overflow-x: hidden;
 }
 
@@ -67,6 +74,11 @@ body {
   /* width: 90%; */
   /* max-width: 1200px; */
   margin: 0 auto;
+  color: var(--text-colour, black);
+}
+
+body {
+  background: linear-gradient(to bottom, var(--gradDark), var(--gradLight));
 }
 
 /* LINKS follow an order in styling */
@@ -77,8 +89,8 @@ a {
 a:link,
 a:active,
 a:visited {
-  color: black;
-  text-decoration: solid underline crimson;
+  color: var(--text-colour, black);
+  text-decoration: solid underline var(--link-line, crimson);
 }
 
 a:hover,
@@ -86,12 +98,13 @@ a:focus {
   background-color: black;
   color: aliceblue;
   border: 1px solid;
-  padding: 1rem;
-  text-decoration: dotted underline crimson;
+  /* padding: 1rem; */
+  padding: 0.3rem 0.6rem;
+  text-decoration: dotted underline var(--link-line, crimson);
 }
 
 a:visited {
-  text-decoration: dashed underline crimson;
+  text-decoration: dashed underline var(--link-line, crimson);
 }
 
 /* 
@@ -114,17 +127,14 @@ a:visited {
 
 /* Common to CSS Flexbox & Grid */
 main#grid {
-  background-color: thistle;
-  padding: 1rem;
+  padding: var(--gap, 1rem);
   /* <grid-row-gap> <grid-column-gap> */
-  gap: 1rem;
+  gap: var(--gap, 1rem);
 }
 
 /* FLEXBOX */
 main.flex-gallery {
-  /* max-width: min-content; */
   display: flex;
-  /* flex: direction wrap/nowrap; */
   flex-flow: row wrap;
   /* CROSS flex axis */
   /* align-items: center; */
@@ -135,7 +145,7 @@ main.flex-gallery {
 main.flex-gallery article {
   /* flex - grow_factor shrink_factor min-size */
   flex: 1 1 240px;
-  max-width: 400px;
+  max-width: var(--max-card-w, 400px);
 }
 
 /* GRID */
@@ -143,7 +153,6 @@ main.grid-gallery {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  /* grid-template-rows: masonry; */
   /* grid-template-rows: min-content 1fr min-content; */
   /* grid-auto-flow: row; */
 
@@ -157,23 +166,15 @@ main.grid-gallery {
 }
 
 article {
-  max-width: 400px;
+  max-width: var(--max-card-w, 400px);
   font-size: 0.75rem;
 }
 
+section h2 span,
 article h2 span {
-  font: initial;
   font-family: "Inter", sans-serif;
-  /* font-size: initial;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal; */
   text-transform: initial;
 }
-
-/* article h2, p, span {
-  display: none;
-} */
 
 /* Responsive images/media:
    `max-width: 100%` scales media to ensure they never overflow their containers.
@@ -193,7 +194,7 @@ article img:hover {
   scale: 0.95;
   filter: sepia(75%);
   cursor: pointer;
-  border-radius: 25%;
+  border-radius: 5rem;
 }
 
 #main-modal {
@@ -201,12 +202,11 @@ article img:hover {
   color: lavender;
   display: none; 
   position: fixed;   /* Stay in place */
-  z-index: 1;   /* Sit on top */
+  z-index: 1;        /* Sit on top */
   top: 0;
   width: 100%;
   height: 100%;
-  /* max-height: 100vh; */
-  overflow: auto;   /* Enable scroll if needed */
+  /* overflow: auto; */
   animation: slideIn 1s;
 }
 
@@ -256,8 +256,16 @@ article img:hover {
   right: 2rem;
   z-index: 2;
   font-family: "Inter", sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 1rem;
+  transition: 1s;
+}
+
+.made-by {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  z-index: 2;
   transition: 1s;
 }
 
@@ -265,14 +273,12 @@ article img:hover {
 #next:hover,
 .close:hover {
   transform: scale(1.2);
-  color: gold;
+  color: orange;
   cursor: pointer;
 }
 
 header {
-  background-color: lightgrey;
   padding: 0 1rem;
-  /* margin-bottom: 1rem; */
   width: 100%;
 }
 
@@ -298,7 +304,7 @@ footer span a:hover,
 footer span a:focus {
   background-color: black;
   border: 1px solid;
-  padding: 0.3rem 0.6rem;
+  padding: 0.3rem 0.1rem;
   cursor: pointer;
 }
 
@@ -310,32 +316,188 @@ footer span a:focus {
   align-items: center;
   /* MAIN flex axis */
   justify-content: space-between;  
-  /* position: fixed; */
-  padding: 0.3rem;
+  padding: 0.3rem 0;
 }
 
 .foot-bar > span > a {
-  padding: 0 0.6rem;
+  /* padding: 0 0.6rem; */
+  letter-spacing: .1rem;
+  text-decoration: solid underline var(--link-line, crimson);
 }
 
-.foot-bar > span:first-of-type > a {
-  letter-spacing: .2rem;
+.foot-bar > span > span {
+  font-size: 1.2rem;
+  color: black;
 }
 
-.foot-bar > span a span {
-  font-size: 1.25rem;
-}
-
-#foot-modal {
+#controls-modal,
+#about-modal {
   display: none;
-  /* position: relative; */
   flex-flow: row wrap;
   animation: slideIn 1s;
   padding-top: 1rem;
-  overflow: auto;   /* Enable scroll if needed */
+  /* overflow: auto;    */
 }
 
-#foot-modal > section {
+#controls-modal > div,
+#about-modal > section {
   flex: 1 1 240px;
   margin: 0 1rem;
 }
+
+/* START Theme switch */
+body:has(.theme-switch__input:checked) {
+  --text-colour: lavender;
+  --gradDark: hsl(198, 44%, 11%);
+  --gradLight: hsl(198, 39%, 29%);
+}
+
+.theme-switch__input {
+  display: none;
+}
+
+.theme-switch__input:hover + .theme-switch__label span::after, .theme-switch__input:focus + .theme-switch__label span::after {
+  background-color: lightgray
+}
+
+.theme-switch__label {
+  position: relative;
+  margin: 2rem 4rem 1rem 2rem;
+  transition: background-color 200ms ease-in-out;
+  width: 7rem;
+  height: 2rem;
+  border-radius: 3.125rem;
+  text-align: center;
+  background-color: slateGray;
+  box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
+}
+.theme-switch__label span {
+  position: absolute;
+  bottom: calc(100% + 0.45rem);
+  left: 0;
+  width: 100%;
+}
+
+.theme-switch__label::before, .theme-switch__label::after {
+  font-size: 2rem;
+  position: absolute;
+  transform: translate3d(0, -50%, 0);
+  top: 50%;
+}
+
+.theme-switch__label::before {
+  content: "\263C";
+  right: 100%;
+  margin-right: 10px;
+  color: orange;
+}
+.theme-switch__label::after {
+  content: "\263E";
+  left: 100%;
+  margin-left: 10px;
+}
+
+.theme-switch__label span::after {
+  position: absolute;
+  top: calc(100% + 0.69rem);
+  left: 0.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  content: "";
+  border-radius: 50%;
+  background-color: burlywood;
+  transition: transform 200ms, background-color 200ms;
+  box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.theme-switch__input:checked ~ .theme-switch__label span::after {
+  transform: translate3d(5.08rem, 0, 0);
+}
+
+.theme-switch__input:checked ~ .theme-switch__label::before {
+  color: black;
+}
+.theme-switch__input:checked ~ .theme-switch__label::after {
+  color: turquoise;
+}
+/* END Theme switch */
+
+/* START captions switch */
+body:has(.captions-switch__input:checked) {
+  article h2, 
+  article h2 span {
+    display: none;
+  }
+}
+
+.captions-switch__input {
+  display: none;
+}
+
+.captions-switch__input:hover + .captions-switch__label span::after, .captions-switch__input:focus + .captions-switch__label span::after {
+  background-color: lightgray;
+}
+
+.captions-switch__label {
+  position: relative;
+  margin: 2rem 4rem 1rem 2rem;
+  transition: background-color 200ms ease-in-out;
+  width: 7rem;
+  height: 2rem;
+  border-radius: 3.125rem;
+  text-align: center;
+  background-color: slateGray;
+  box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
+}
+.captions-switch__label span {
+  position: absolute;
+  bottom: calc(100% + 0.45rem);
+  left: 0;
+  width: 100%;
+}
+
+.captions-switch__label::before, .captions-switch__label::after {
+  font-size: 2rem;
+  position: absolute;
+  transform: translate3d(0, -50%, 0);
+  top: 50%;
+}
+
+.captions-switch__label::before {
+  content: "ON";
+  right: 100%;
+  margin-right: 10px;
+  color: orange;
+  font-size: 1.5rem;
+}
+.captions-switch__label::after {
+  content: "OFF";
+  left: 100%;
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.captions-switch__label span::after {
+  position: absolute;
+  top: calc(100% + 0.69rem);
+  left: 0.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  content: "";
+  border-radius: 50%;
+  background-color: burlywood;
+  transition: transform 200ms, background-color 200ms;
+  box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.captions-switch__input:checked ~ .captions-switch__label span::after {
+  transform: translate3d(5.08rem, 0, 0);
+}
+
+.captions-switch__input:checked ~ .captions-switch__label::before {
+  color: black;
+}
+.captions-switch__input:checked ~ .captions-switch__label::after {
+  color: turquoise;
+}
+/* END captions switch */
