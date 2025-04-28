@@ -116,5 +116,16 @@ function init() {
       },500)
     }
   })
+
+  // get range (slider) value:
+  // Get the root element
+  var r = document.querySelector(':root');
+  // slider input element
+  var gapSize = document.getElementById("gapSwitch");
+  gapSize.addEventListener('input', () => {
+    r.style.setProperty('--gap', gapSize.value+'rem');
+    // console.log("Got Here#2 :", gapSize.value);
+  })
+
   // console.log("Got Here#2"); 
 };

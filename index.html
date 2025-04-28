@@ -184,6 +184,22 @@
 					<label for="captionsSwitch" class="captions-switch__label">
 					  <span>AI captions</span>
 					</label>
+
+					<!--Gap switch-->
+					<span class="range">
+						<datalist id="values">
+					  	<option value="0" label="0"></option>
+					  	<option value="1" label="1"></option>
+					  	<option value="2" label="2"></option>
+					  	<option value="3" label="3"></option>
+					  	<option value="4" label="4"></option>
+					  	<option value="5" label="5"></option>
+					  </datalist>
+					  <input type="range" min="0" max="5" value="1" step="1" list="values" id="gapSwitch" name="gap-switch" class="gap-switch__input"/>
+					  <label for="gapSwitch" class="gap-switch__label">
+					    <span>Gap size</span>
+					  </label>
+					</span>
 			</div>
 		</footer>
 

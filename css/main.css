@@ -3,6 +3,30 @@
 	Made by Sound Spinning | soundspinning.co.uk
 */
 
+/* 
+  GLOBAL page settings:
+  ======
+  Remember `rem` & `rlh` are relative to the global (<html>) values below.
+  Also, `%` is always relative to the 'length' of the parent element.
+  `%` units for width & height are wrt the inline-block (hor.) total width.
+  When more than one `%` is used in 'nested elements', remember it gets cumulative ...
+
+  `max-width` as `100%` helps to prevent overflow issues, and avoids over-stretching images.
+  This tech helps to make images responsive for all screens:
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing
+*/
+
+/* set global VARIABLES */
+:root {
+  --base-size: 16px;
+  --gap: 1rem;
+  --max-card-w: 400px;
+  --text-colour: black;
+  --gradDark: lavender;
+  --gradLight: white;
+  --link-line: crimson;
+}
+
 /* FONTS: 
 Pair a modern sans-serif (e.g., Inter) for body text with a monospace font (e.g., Fira Code) for code/engineering sections. */
 /* https://fonts.bunny.net/ - do not track, faster than G-fonts [?] */
@@ -30,30 +54,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-style: normal;
   text-transform: uppercase;
-}
-
-/* 
-  GLOBAL page settings:
-  ======
-  Remember `rem` & `rlh` are relative to the global (<html>) values below.
-  Also, `%` is always relative to the 'length' of the parent element.
-  `%` units for width & height are wrt the inline-block (hor.) total width.
-  When more than one `%` is used in 'nested elements', remember it gets cumulative ...
-
-  `max-width` as `100%` helps to prevent overflow issues, and avoids over-stretching images.
-  This tech helps to make images responsive for all screens:
-  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Sizing
-*/
-
-/* set global VARIABLES */
-:root {
-  --base-size: 16px;
-  --gap: 1rem;
-  --max-card-w: 400px;
-  --text-colour: black;
-  --gradDark: lavender;
-  --gradLight: white;
-  --link-line: crimson;
 }
 
 html {
@@ -327,7 +327,7 @@ footer span a:focus {
 
 .foot-bar > span > span {
   font-size: 1.2rem;
-  color: black;
+  /* color: black; */
 }
 
 #controls-modal,
@@ -336,7 +336,7 @@ footer span a:focus {
   flex-flow: row wrap;
   animation: slideIn 1s;
   padding-top: 1rem;
-  /* overflow: auto;    */
+  padding-bottom: 0.5rem;
 }
 
 #controls-modal > div,
@@ -350,6 +350,10 @@ body:has(.theme-switch__input:checked) {
   --text-colour: lavender;
   --gradDark: hsl(198, 44%, 11%);
   --gradLight: hsl(198, 39%, 29%);
+  footer {
+    background-color: black;
+    opacity: 0.89;
+  }
 }
 
 .theme-switch__input {
@@ -415,7 +419,8 @@ body:has(.theme-switch__input:checked) {
 }
 
 .theme-switch__input:checked ~ .theme-switch__label::before {
-  color: black;
+  /* color: black; */
+  color: var(--text-colour);
 }
 .theme-switch__input:checked ~ .theme-switch__label::after {
   color: turquoise;
@@ -440,7 +445,7 @@ body:has(.captions-switch__input:checked) {
 
 .captions-switch__label {
   position: relative;
-  margin: 2rem 4rem 1rem 2rem;
+  margin: 2rem 5rem 1rem 2rem;
   transition: background-color 200ms ease-in-out;
   width: 7rem;
   height: 2rem;
@@ -495,9 +500,33 @@ body:has(.captions-switch__input:checked) {
 }
 
 .captions-switch__input:checked ~ .captions-switch__label::before {
-  color: black;
+  /* color: black; */
+  color: var(--text-colour);
 }
 .captions-switch__input:checked ~ .captions-switch__label::after {
   color: turquoise;
 }
 /* END captions switch */
+
+/* START gap switch */
+.range {
+  display: flex;
+  flex-flow: column-reverse;
+  /* CROSS flex axis */
+  align-items: center;
+  /* MAIN flex axis */
+  justify-content: flex-end;
+}
+
+.gap-switch__label {
+  margin-bottom: 0.8rem;
+}
+
+datalist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* writing-mode: vertical-lr; */
+  width: 150px;
+}
+/* END gap switch */
