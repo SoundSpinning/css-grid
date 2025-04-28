@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 html {
   box-sizing: border-box;
   font-size: var(--base-size, 16px);
-  font-size: min(0.55rem + 1vw, 18px);
+  font-size: min(0.6rem + 1vw, 18px);
   line-height: 1.5;  /* Default `lh`: 1.2 * font-size */
   overflow-x: hidden;
 }
@@ -263,10 +263,14 @@ article img:hover {
 
 .made-by {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
   right: 2rem;
   z-index: 2;
   transition: 1s;
+}
+
+ul, .made-by {
+  font-size: min(0.8rem + 1vw, 18px);
 }
 
 #prev:hover,
@@ -316,7 +320,7 @@ footer span a:focus {
   align-items: center;
   /* MAIN flex axis */
   justify-content: space-between;  
-  padding: 0.3rem 0;
+  padding: 0.5rem 0;
 }
 
 .foot-bar > span > a {
@@ -335,11 +339,11 @@ footer span a:focus {
   display: none;
   flex-flow: row wrap;
   animation: slideIn 1s;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
+  padding: 1rem 2rem 1rem 0;
+  justify-content: space-evenly;  
 }
 
-#controls-modal > div,
+/* #controls-modal > div, */
 #about-modal > section {
   flex: 1 1 240px;
   margin: 0 1rem;
