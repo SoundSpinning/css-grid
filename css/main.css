@@ -125,6 +125,28 @@ a:visited {
   to {translate: 100vw 100vh; opacity: 0; scale: 0;}
 }
 
+@keyframes showup {
+  0% {opacity:0;}
+  20% {opacity:1;}
+  80% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@keyframes l2r {
+  0% { margin-left:-100vw; }
+  20% { margin-left:-100vw; }
+  35% { margin-left:0px; }
+  100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+  0% {opacity:0;width:0px;}
+  20% {opacity:1;width:0px;}
+  30% {width:75vw;}
+  80% {opacity:1;}
+  100% {opacity:0;width:75vw;}
+}
+
 /* Common to CSS Flexbox & Grid */
 main#grid {
   padding: var(--gap, 1rem);
@@ -197,6 +219,52 @@ article img:hover {
   border-radius: 5rem;
 }
 
+#intro-modal {
+  background-color: black;
+  color: lavender;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  animation: slideOut 1s 5s;
+}
+
+#intro-modal div {
+  display: flex; 
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;  
+  height: 100%;
+  /* min-width: 240px; */
+  font-size: calc(3rem + 1vw);
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+#intro-text div:nth-of-type(1) {
+  animation: showup 7s infinite;
+}
+
+#intro-text div:nth-of-type(2) {
+  animation: reveal 7s infinite;
+}
+
+#intro-text div span {
+  animation: l2r 7s infinite;
+}
+
+#intro-text div:nth-of-type(3) {
+  display: inline-block;
+  animation: reveal 7s infinite;
+  position: absolute;
+  top: 25vh;
+}
+
+#intro-text div strong {
+  color: var(--link-line, crimson);
+}
+
 #main-modal {
   background-color: black;
   color: lavender;
@@ -234,6 +302,9 @@ article img:hover {
     top: unset;
     bottom: 1rem;
     font-size: medium;
+  }
+  #intro-modal div {
+    font-size: calc(2rem + 1vw);
   }
 }
 

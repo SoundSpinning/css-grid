@@ -35,10 +35,15 @@ fetch('js/images.json')
 
 function init() {
   // Get the modals
+  var introModal = document.getElementById("intro-modal");
   var modal = document.getElementById("main-modal");
   var aboutModal = document.getElementById("about-modal");
   var controlsModal = document.getElementById("controls-modal");
+  // setTimeout(()=>{
+  //   introModal.style.display = "none";
+  // },5000)
   
+  // MAIN modal
   // Get the image and insert it inside the modal - use its "alt" text as a caption
   // + carousel inside the modal
   var imgs = document.querySelectorAll("article img");
@@ -78,7 +83,6 @@ function init() {
         modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
         // console.log("clicked Next: img-id = ", e.dataset.id); 
       }
-
     }
   })
   
@@ -101,11 +105,13 @@ function init() {
   // When the user clicks on <span> (x), close the modal
   xClose.forEach(e => {
     e.onclick = function() { 
-      // modal.style.display = "none";
+      introModal.style.animation = "slideOut 1s";
       modal.style.animation = "slideOut 1s";
       aboutModal.style.animation = "slideOut 1s";
       controlsModal.style.animation = "slideOut 1s";
       setTimeout(()=>{
+        introModal.style.display = "none";
+        // introModal.style.animation = "slideIn 1s";
         modal.style.display = "none";
         modal.style.animation = "slideIn 1s";
         aboutModal.style.display = "none";
