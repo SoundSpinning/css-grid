@@ -41,7 +41,7 @@ function init() {
   var controlsModal = document.getElementById("controls-modal");
   setTimeout(()=>{
     introModal.style.display = "none";
-  },5000)
+  },7000)
   
   // MAIN modal
   // Get the image and insert it inside the modal - use its "alt" text as a caption
