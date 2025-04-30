@@ -21,8 +21,14 @@ fetch('js/images.json')
     main_grid.innerHTML +=
 `     <!-- IMG${img.imgId} -->
 			<article>
-				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${img.imgId}"/>
-				<h2>${img.imgId}.-${img.year}<span> ${img.alt}</span></h2>
+				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${img.imgId}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
+				<h2>${img.imgId}.-${img.file.split(/\.(?=[^\.]+$)/)[0]}${img.year}<span> ${img.alt}</span></h2>
+				<details>
+					<summary> Info </summary>
+					<p>
+						<span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${img.imgId} + P&amp;P</span> <button role="button">Buy</button>
+					</p>
+				</details>
 			</article>`;
   }
   // console.log("Got Here#1"); 
@@ -47,18 +53,22 @@ function init() {
   // Get the image and insert it inside the modal - use its "alt" text as a caption
   // + carousel inside the modal
   var imgs = document.querySelectorAll("article img");
-  // var imgH2 = document.querySelectorAll("article h2");
+  var imgDetails = document.querySelectorAll("article details");
   // var imgp = document.querySelectorAll("article p");
   var modalImg = document.getElementById("modal-img");
   var modalPrev = document.getElementById("prev");
   var modalNext = document.getElementById("next");
   var modalCount = document.getElementById("count");
-  var captionText = document.getElementById("modal-caption");
+  var modalTitle = document.getElementById("modal-title");
+  var modalCaption = document.getElementById("modal-caption");
+  var modalDetails = document.getElementById("modal-details");
   imgs.forEach(e => {
     e.onclick=()=> {
       modal.style.display = "block";
       modalImg.src = e.src;
-      captionText.innerHTML = e.alt;
+      modalTitle.innerHTML = e.title;
+      modalCaption.innerHTML = e.alt;
+      modalDetails.innerHTML = imgDetails[e.dataset.id - 1].innerHTML;
       modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
       // basic carousel logic via controls
       modalPrev.onclick=()=> {
@@ -68,7 +78,9 @@ function init() {
           e = imgs[e.dataset.id - 2];
         }
         modalImg.src = e.src;
-        captionText.innerHTML = e.alt;
+        modalTitle.innerHTML = e.title;
+        modalCaption.innerHTML = e.alt;
+        modalDetails.innerHTML = imgDetails[e.dataset.id - 1].innerHTML;
         modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
         // console.log("clicked Prev: img-id = ", e.dataset.id); 
       }
@@ -79,7 +91,9 @@ function init() {
           e = imgs[e.dataset.id];
         }
         modalImg.src = e.src;
-        captionText.innerHTML = e.alt;
+        modalTitle.innerHTML = e.title;
+        modalCaption.innerHTML = e.alt;
+        modalDetails.innerHTML = imgDetails[e.dataset.id - 1].innerHTML;
         modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
         // console.log("clicked Next: img-id = ", e.dataset.id); 
       }
