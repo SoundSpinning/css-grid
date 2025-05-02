@@ -42,12 +42,25 @@ fetch('js/images.json')
 function init() {
   // Get the modals
   var introModal = document.getElementById("intro-modal");
+  var loader = document.querySelector(".loader");
   var modal = document.getElementById("main-modal");
   var aboutModal = document.getElementById("about-modal");
   var controlsModal = document.getElementById("controls-modal");
+  document.querySelector("#intro-text div:nth-of-type(1)").style.display = "flex";
+  document.querySelector("#intro-text div:nth-of-type(1)").style.animation = "showup 7s";
+  document.querySelector("#intro-text div:nth-of-type(2)").style.display = "flex";
+  document.querySelector("#intro-text div:nth-of-type(2)").style.animation = "reveal 5s infinite";
+  document.querySelector("#intro-text div:nth-of-type(3)").style.display = "inline-block";
+  document.querySelector("#intro-text div:nth-of-type(3)").style.animation = "reveal 7s infinite";
+  introModal.style.animation = "slideOut 2s 5s";
+  loader.style.animation = "showup 2s infinite";
+  setTimeout(()=>{
+    loader.style.display = "none";
+  },2000)
+
   setTimeout(()=>{
     introModal.style.display = "none";
-  },7000)
+  },6000)
   
   // MAIN modal
   // Get the image and insert it inside the modal - use its "alt" text as a caption
@@ -101,14 +114,17 @@ function init() {
   })
   
   // About box popup
+  // var footer = document.querySelector("footer");
   var footBar = document.querySelector(".foot-bar");
   var aboutBox = document.querySelector(".foot-bar > span:nth-of-type(1) > a");
   var controlsBox = document.querySelector(".foot-bar > span:nth-of-type(2) > a");
   aboutBox.onclick=()=> {
     aboutModal.style.display = "flex";
+    // footer.style.animation = "slideIn 0.8s";
     footBar.style.display = "none";
   }
   controlsBox.onclick=()=> {
+    // footer.style.animation = "slideIn 0.8s";
     controlsModal.style.display = "flex";
     footBar.style.display = "none";
   }
@@ -129,9 +145,10 @@ function init() {
         modal.style.display = "none";
         modal.style.animation = "slideIn 1s";
         aboutModal.style.display = "none";
-        aboutModal.style.animation = "slideIn 1s";
+        aboutModal.style.animation = "slideIn 0.8s";
         controlsModal.style.display = "none";
-        controlsModal.style.animation = "slideIn 1s";
+        controlsModal.style.animation = "slideIn 0.8s";
+        // footer.style.animation = "slideIn 0.8s";
         footBar.style.display = "flex";
       },500)
     }
