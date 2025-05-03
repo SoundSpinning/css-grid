@@ -351,6 +351,7 @@ article img:hover {
   }
   details p {
     flex-flow: row wrap;
+    align-items: center;
   }
 }
 
