@@ -211,6 +211,11 @@ details p {
   align-items: start;
 }
 
+#modal-details p {
+  flex-flow: row wrap;
+  align-items: center;
+}
+
 details span {
   padding-right: 0.5rem;
 }

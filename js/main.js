@@ -4,36 +4,58 @@
 // Remember to set imgix path correctly to serve images online properly.
 // It may need a specific sub-folder name from the `Assets` repo.
 var imgix_path = "https://sound-spinning-pics.imgix.net/";
+var imgix_path_2 = "https://sound-spinning-pics.imgix.net/jes/";
 // imgix settings, appended after image filename.
 // Input width value `w=` right.
 var imgix_ops = "?w=800&auto=compress,enhance,format";
-// var index = 0;
+var index = 0;
 
-// START parsing file list
-fetch('js/images.json')
+// START parsing file(s) list
+fetch('js/images_1.json')
 .then(response => response.json())
 .then(data => {
   const main_grid = document.getElementById("grid");
   const dataImgs = data.images;
   // Append images to HTML
   for (const img of dataImgs) {
-    // index += 1;
+    index += 1;
     main_grid.innerHTML +=
 `     <!-- IMG${img.imgId} -->
 			<article>
-				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${img.imgId}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
-				<h2>${img.imgId}.-${img.file.split(/\.(?=[^\.]+$)/)[0]}${img.year}<span> ${img.alt}</span></h2>
+				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
+				<h2>${index}.-${img.file.split(/\.(?=[^\.]+$)/)[0]}${img.year}<span> ${img.alt}</span></h2>
 				<details>
 					<summary> Info </summary>
 					<p>
-						<span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${img.imgId} + P&amp;P</span> <button role="button">Buy</button>
+						<span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${index} + P&amp;P</span> <button role="button">Buy</button>
 					</p>
 				</details>
 			</article>`;
+  }})
+fetch('js/images_2.json')
+.then(response => response.json())
+.then(data => {
+  const main_grid = document.getElementById("grid");
+  const dataImgs = data.images;
+  // Append images to HTML
+  for (const img of dataImgs) {
+    index += 1;
+    main_grid.innerHTML +=
+`     <!-- IMG${img.imgId} -->
+      <article>
+        <img src="${imgix_path_2}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
+        <h2>${index}.-${img.file.split(/\.(?=[^\.]+$)/)[0]}${img.year}<span> ${img.alt}</span></h2>
+        <details>
+          <summary> Info </summary>
+          <p>
+            <span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${index} + P&amp;P</span> <button role="button">Buy</button>
+          </p>
+        </details>
+      </article>`;
   }
-  // console.log("Got Here#1"); 
-  // this is called here so that the DOM has all elements required
-  window.onload = init();
+// console.log("Got Here#1"); 
+// this is called here so that the DOM has all elements required
+window.onload = init();
 })
 .catch(error => console.error("Error fetching JSON data:", error));
 // END dealing with files in JSON list
