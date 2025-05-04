@@ -9,12 +9,13 @@ var imgix_path_2 = "https://sound-spinning-pics.imgix.net/jes/";
 // Input width value `w=` right.
 var imgix_ops = "?w=800&auto=compress,enhance,format";
 var index = 0;
+const main_grid = document.getElementById("grid");
 
 // START parsing file(s) list
 fetch('js/images_1.json')
 .then(response => response.json())
 .then(data => {
-  const main_grid = document.getElementById("grid");
+  // const main_grid = document.getElementById("grid");
   const dataImgs = data.images;
   // Append images to HTML
   for (const img of dataImgs) {
@@ -35,7 +36,7 @@ fetch('js/images_1.json')
 fetch('js/images_2.json')
 .then(response => response.json())
 .then(data => {
-  const main_grid = document.getElementById("grid");
+  // const main_grid = document.getElementById("grid");
   const dataImgs = data.images;
   // Append images to HTML
   for (const img of dataImgs) {
@@ -83,6 +84,8 @@ function init() {
   setTimeout(()=>{
     introModal.style.display = "none";
   },6000)
+  
+  main_grid.style.display = "grid";
   
   // MAIN modal
   // Get the image and insert it inside the modal - use its "alt" text as a caption
@@ -146,7 +149,6 @@ function init() {
     footBar.style.display = "none";
   }
   controlsBox.onclick=()=> {
-    // footer.style.animation = "slideIn 0.8s";
     controlsModal.style.display = "flex";
     footBar.style.display = "none";
   }
@@ -170,7 +172,6 @@ function init() {
         aboutModal.style.animation = "slideIn 0.8s";
         controlsModal.style.display = "none";
         controlsModal.style.animation = "slideIn 0.8s";
-        // footer.style.animation = "slideIn 0.8s";
         footBar.style.display = "flex";
       },500)
     }
