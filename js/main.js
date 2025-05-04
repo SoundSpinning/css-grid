@@ -92,7 +92,6 @@ function init() {
   // + carousel inside the modal
   var imgs = document.querySelectorAll("article img");
   var imgDetails = document.querySelectorAll("article details");
-  // var imgp = document.querySelectorAll("article p");
   var modalImg = document.getElementById("modal-img");
   var modalPrev = document.getElementById("prev");
   var modalNext = document.getElementById("next");
@@ -139,13 +138,12 @@ function init() {
   })
   
   // About box popup
-  // var footer = document.querySelector("footer");
+  var footer = document.querySelector("footer");
   var footBar = document.querySelector(".foot-bar");
   var aboutBox = document.querySelector(".foot-bar > span:nth-of-type(1) > a");
   var controlsBox = document.querySelector(".foot-bar > span:nth-of-type(2) > a");
   aboutBox.onclick=()=> {
     aboutModal.style.display = "flex";
-    // footer.style.animation = "slideIn 0.8s";
     footBar.style.display = "none";
   }
   controlsBox.onclick=()=> {
@@ -165,7 +163,6 @@ function init() {
       controlsModal.style.animation = "slideOut 1s";
       setTimeout(()=>{
         introModal.style.display = "none";
-        // introModal.style.animation = "slideIn 1s";
         modal.style.display = "none";
         modal.style.animation = "slideIn 1s";
         aboutModal.style.display = "none";
