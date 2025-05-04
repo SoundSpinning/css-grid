@@ -5,6 +5,7 @@
 // It may need a specific sub-folder name from the `Assets` repo.
 var imgix_path = "https://sound-spinning-pics.imgix.net/";
 var imgix_path_2 = "https://sound-spinning-pics.imgix.net/jes/";
+var imgix_path_3 = "https://sound-spinning-pics.imgix.net/random/";
 // imgix settings, appended after image filename.
 // Input width value `w=` right.
 var imgix_ops = "?w=800&auto=compress,enhance,format";
@@ -24,7 +25,7 @@ fetch('js/images_1.json')
 `     <!-- IMG${img.imgId} -->
 			<article>
 				<img src="${imgix_path}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
-				<h2>${index}.-${img.file.split(/\.(?=[^\.]+$)/)[0]}${img.year}<span> ${img.alt}</span></h2>
+				<h2>${index}.-${img.year}<span> ${img.alt}</span></h2>
 				<details>
 					<summary> Info </summary>
 					<p>
@@ -45,7 +46,7 @@ fetch('js/images_2.json')
 `     <!-- IMG${img.imgId} -->
       <article>
         <img src="${imgix_path_2}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
-        <h2>${index}.-${img.file.split(/\.(?=[^\.]+$)/)[0]}${img.year}<span> ${img.alt}</span></h2>
+        <h2>${index}.-${img.year}<span> ${img.alt}</span></h2>
         <details>
           <summary> Info </summary>
           <p>
@@ -53,7 +54,29 @@ fetch('js/images_2.json')
           </p>
         </details>
       </article>`;
-  }
+  }})
+  fetch('js/images_3.json')
+  .then(response => response.json())
+  .then(data => {
+    // const main_grid = document.getElementById("grid");
+    const dataImgs = data.images;
+    // Append images to HTML
+    for (const img of dataImgs) {
+      index += 1;
+      main_grid.innerHTML +=
+  `     <!-- IMG${img.imgId} -->
+        <article>
+          <img src="${imgix_path_3}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
+          <h2>${index}.-${img.year}<span> ${img.alt}</span></h2>
+          <details>
+            <summary> Info </summary>
+            <p>
+              <span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${index} + P&amp;P</span> <button role="button">Buy</button>
+            </p>
+          </details>
+        </article>`;
+    }
+// ${img.file.split(/\.(?=[^\.]+$)/)[0]}
 // console.log("Got Here#1"); 
 // this is called here so that the DOM has all elements required
 window.onload = init();
