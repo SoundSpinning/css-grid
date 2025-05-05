@@ -1,3 +1,7 @@
+// set scroll off at intro-modal
+var page = document.querySelector("html");
+page.style.overflowY = "hidden";
+
 // 
 // Read and add to HTML all images via *.json file list
 // 
@@ -99,18 +103,19 @@ function init() {
   document.querySelector("#intro-text div:nth-of-type(3)").style.display = "inline-block";
   document.querySelector("#intro-text div:nth-of-type(3)").style.animation = "reveal 7s infinite";
   introModal.style.animation = "slideOut 2s 5s";
-  loader.style.animation = "showup 2s infinite";
+  loader.style.animation = "showup 2.5s infinite";
   setTimeout(()=>{
     loader.style.display = "none";
   },2000)
 
   setTimeout(()=>{
     introModal.style.display = "none";
+    page.style.overflowY = "initial";
   },6000)
   
   main_grid.style.display = "grid";
-  
-  // MAIN modal
+    
+  // MAIN modal & carousel
   // Get the image and insert it inside the modal - use its "alt" text as a caption
   // + carousel inside the modal
   var imgs = document.querySelectorAll("article img");
@@ -124,6 +129,7 @@ function init() {
   var modalDetails = document.getElementById("modal-details");
   imgs.forEach(e => {
     e.onclick=()=> {
+      page.style.overflowY = "hidden";
       modal.style.display = "block";
       modalImg.src = e.src;
       modalTitle.innerHTML = e.title;
@@ -166,6 +172,7 @@ function init() {
   var aboutBox = document.querySelector(".foot-bar > span:nth-of-type(1) > a");
   var controlsBox = document.querySelector(".foot-bar > span:nth-of-type(2) > a");
   aboutBox.onclick=()=> {
+    // page.style.overflowY = "hidden";
     aboutModal.style.display = "flex";
     footBar.style.display = "none";
   }
@@ -193,6 +200,7 @@ function init() {
         controlsModal.style.display = "none";
         controlsModal.style.animation = "slideIn 0.8s";
         footBar.style.display = "flex";
+        page.style.overflowY = "initial";
       },500)
     }
   })
