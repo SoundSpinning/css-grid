@@ -338,6 +338,11 @@ article img:hover {
   padding: 0.5rem;
 }
 
+#modal-content > a:hover {
+  padding: 0;
+  border: 0;
+}
+
 @media screen and (max-width: 430px) {
   .foot-bar {
     font-size: min(1rem + 1vw, 18px);

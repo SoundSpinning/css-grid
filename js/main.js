@@ -81,7 +81,7 @@ fetch('js/images_2.json')
         </article>`;
     }
 // ${img.file.split(/\.(?=[^\.]+$)/)[0]}
-// console.log("Got Here#1"); 
+console.log(index, "Items generated"); 
 // this is called here so that the DOM has all elements required
 window.onload = init();
 })
@@ -127,6 +127,8 @@ function init() {
   var modalTitle = document.getElementById("modal-title");
   var modalCaption = document.getElementById("modal-caption");
   var modalDetails = document.getElementById("modal-details");
+  var modalButton = document.querySelector("#modal-content > a");
+  var appName = "https://soundspinning.github.io/Puzzles";
   imgs.forEach(e => {
     e.onclick=()=> {
       page.style.overflowY = "hidden";
@@ -136,6 +138,7 @@ function init() {
       modalCaption.innerHTML = e.alt;
       modalDetails.innerHTML = imgDetails[e.dataset.id - 1].innerHTML;
       modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
+      modalButton.href = appName.concat("?image=",modalImg.src);
       // basic carousel logic via controls
       modalPrev.onclick=()=> {
         if (e.dataset.id == 1) {
@@ -148,6 +151,7 @@ function init() {
         modalCaption.innerHTML = e.alt;
         modalDetails.innerHTML = imgDetails[e.dataset.id - 1].innerHTML;
         modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
+        modalButton.href = appName.concat("?image=",modalImg.src);
         // console.log("clicked Prev: img-id = ", e.dataset.id); 
       }
       modalNext.onclick=()=> {
@@ -161,6 +165,7 @@ function init() {
         modalCaption.innerHTML = e.alt;
         modalDetails.innerHTML = imgDetails[e.dataset.id - 1].innerHTML;
         modalCount.innerHTML = e.dataset.id+" / "+imgs.length;
+        modalButton.href = appName.concat("?image=",modalImg.src);
         // console.log("clicked Next: img-id = ", e.dataset.id); 
       }
     }
