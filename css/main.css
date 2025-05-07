@@ -358,6 +358,10 @@ article img:hover {
   #intro-modal div {
     font-size: calc(2rem + 1vw);
   }
+  details {
+    padding-left: 1rem;
+    font-size: medium;
+  }
   details p {
     flex-flow: row wrap;
     align-items: center;
