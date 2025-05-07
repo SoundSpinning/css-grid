@@ -202,8 +202,7 @@ article h2 span {
 
 button,
 details {
-  /* z-index: 1; */
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 details p {
@@ -270,7 +269,7 @@ article img:hover {
   align-items: center;
   justify-content: center;  
   height: 100%;
-  font-size: calc(3rem + 1vw);
+  font-size: 3rem;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -345,7 +344,7 @@ article img:hover {
 
 @media screen and (max-width: 430px) {
   .foot-bar {
-    font-size: min(1rem + 1vw, 18px);
+    font-size: 1rem;
   }
   #modal-controls {
     top: unset;
