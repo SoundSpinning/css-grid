@@ -221,14 +221,14 @@ details span {
 }
 
 summary {
-  text-decoration: underline 1px solid crimson;
+  text-decoration: underline 1px solid var(--link-line, crimson);
 }
 
 summary:active,
 summary:focus,
 summary:hover {
   cursor: pointer;
-  text-decoration: underline 1px dotted crimson;
+  text-decoration: underline 1px dotted var(--link-line, crimson);
 }
 
 /* Responsive images/content:
@@ -240,16 +240,16 @@ picture,
 video {
   max-width: 100%;
   max-height: 80vh;
-  /* max-height: 800px; */
   /* transition - <property> <duration> <timing-function> <delay>; */
-  transition: 1s;
+  transition: 0.5s;
 }
 
 article img:hover {
-  scale: 0.95;
+  /* scale: 0.95; */
+  scale: 1.05;
   filter: sepia(75%);
   cursor: pointer;
-  border-radius: 5rem;
+  border-radius: 10px;
 }
 
 /* Landing (intro) modal */

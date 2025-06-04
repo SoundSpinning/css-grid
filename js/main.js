@@ -13,6 +13,7 @@ var imgix_path_3 = "https://sound-spinning-pics.imgix.net/random/";
 // imgix settings, appended after image filename.
 // Input width value `w=` right.
 var imgix_ops = "?w=800&auto=compress,enhance,format";
+// var imgix_ops = "?h=1000&auto=compress,enhance,format";
 var index = 0;
 const main_grid = document.getElementById("grid");
 
