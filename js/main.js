@@ -60,27 +60,27 @@ fetch('js/images_1.json')
 //         </details>
 //       </article>`;
 //   }})
-  fetch('js/images_3.json')
-  .then(response => response.json())
-  .then(data => {
-    // const main_grid = document.getElementById("grid");
-    const dataImgs = data.images;
-    // Append images to HTML
-    for (const img of dataImgs) {
-      index += 1;
-      main_grid.innerHTML +=
-  `     <!-- IMG${img.imgId} -->
-        <article>
-          <img src="${imgix_path_3}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
-          <h2>${index}.-${img.year}<span> ${img.alt}</span></h2>
-          <details>
-            <summary> Info </summary>
-            <p>
-              <span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${index} + P&amp;P</span> <button role="button">Buy</button>
-            </p>
-          </details>
-        </article>`;
-    }
+fetch('js/images_3.json')
+.then(response => response.json())
+.then(data => {
+  // const main_grid = document.getElementById("grid");
+  const dataImgs = data.images;
+  // Append images to HTML
+  for (const img of dataImgs) {
+    index += 1;
+    main_grid.innerHTML +=
+`     <!-- IMG${img.imgId} -->
+      <article>
+        <img src="${imgix_path_3}${img.file}${imgix_ops}" alt="${img.alt}" loading="lazy" data-id="${index}" title="${img.file.split(/\.(?=[^\.]+$)/)[0]}"/>
+        <h2>${index}.-${img.year}<span> ${img.alt}</span></h2>
+        <details>
+          <summary> Info </summary>
+          <p>
+            <span>${img.type}</span> <span><b>Size</b>: ${img.size}</span> <span><b>Price</b>: &pound;${index} + P&amp;P</span> <button role="button">Buy</button>
+          </p>
+        </details>
+      </article>`;
+  }
 // ${img.file.split(/\.(?=[^\.]+$)/)[0]}
 console.log(index, "Items generated"); 
 // this is called here so that the DOM has all elements required
